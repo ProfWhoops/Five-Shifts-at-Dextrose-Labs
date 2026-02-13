@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://djrnftl1kgjo8"]
+
+[ext_resource type="Script" uid="uid://bpbtcnncrrwe7" path="res://Scenes/Scripts/camera_2d.gd" id="1_ei2s5"]
+[ext_resource type="Texture2D" uid="uid://c0n0ya84yyvyl" path="res://Assets/Images/office.svg" id="1_llmbb"]
+
+[node name="Office" type="Node2D" unique_id=1800275553]
+
+[node name="OfficeSprite2D" type="Sprite2D" parent="." unique_id=1979622214]
+texture_filter = 1
+scale = Vector2(1.8045113, 1.8045113)
+texture = ExtResource("1_llmbb")
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=473000103 node_paths=PackedStringArray("officeSprite")]
+anchor_mode = 0
+script = ExtResource("1_ei2s5")
+scrollArea = 300
+scrollSpeed = 800.0
+scrollDivisions = 3
+officeSprite = NodePath("../OfficeSprite2D")

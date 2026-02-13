@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://draqvbiwggdhj"]
+
+[ext_resource type="Script" uid="uid://dtylmxn1wt16u" path="res://Scenes/Scripts/cameras.gd" id="1_tqgpq"]
+[ext_resource type="Script" uid="uid://hfdh363hr8pm" path="res://Scenes/Scripts/cam_footage.gd" id="2_n8fnm"]
+[ext_resource type="Texture2D" uid="uid://b34emyh41y4ej" path="res://Assets/Images/hallway1.svg" id="3_vua3y"]
+[ext_resource type="Texture2D" uid="uid://ce35fmjvdkcup" path="res://Assets/Images/ipad.svg" id="4_0i2nn"]
+[ext_resource type="Texture2D" uid="uid://b07jxhfl3kfu1" path="res://Assets/Images/TV Static.jpeg" id="4_vua3y"]
+[ext_resource type="AudioStream" uid="uid://dwsvjgwhos5nr" path="res://Assets/Audio/dragon-studio-tv-static-323620.mp3" id="6_pmeph"]
+
+[node name="Cameras" type="Control" unique_id=549763878]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tqgpq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1690641682]
+
+[node name="CamHider" type="Control" parent="CanvasLayer" unique_id=384616340]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_n8fnm")
+pan_speed = 40.0
+
+[node name="UpadBOOST" type="Control" parent="CanvasLayer/CamHider" unique_id=377843419]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 251.0
+offset_top = 100.0
+offset_right = -307.0
+offset_bottom = -118.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CamFootage" type="TextureRect" parent="CanvasLayer/CamHider/UpadBOOST" unique_id=1707620209]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_vua3y")
+expand_mode = 3
+stretch_mode = 6
+
+[node name="Static" type="TextureRect" parent="CanvasLayer/CamHider/UpadBOOST" unique_id=1000261902]
+self_modulate = Color(1, 1, 1, 0.22352941)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_vua3y")
+stretch_mode = 6
+
+[node name="Ipad" type="TextureRect" parent="CanvasLayer/CamHider" unique_id=702404379]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_0i2nn")
+stretch_mode = 5
+
+[node name="CamButtons" type="Control" parent="CanvasLayer/CamHider" unique_id=1149057360]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cam1Button" type="Button" parent="CanvasLayer/CamHider/CamButtons" unique_id=1832109021]
+layout_mode = 0
+offset_left = 666.0
+offset_top = 309.0
+offset_right = 797.0
+offset_bottom = 364.0
+text = "Cam1"
+
+[node name="Cam2Button" type="Button" parent="CanvasLayer/CamHider/CamButtons" unique_id=1187335408]
+layout_mode = 0
+offset_left = 812.0
+offset_top = 381.0
+offset_right = 942.0
+offset_bottom = 439.0
+text = "Cam2"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=398162466]
+
+[node name="CameraButton" type="Button" parent="CanvasLayer2" unique_id=1718190028]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -133.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+text = "cams"
+
+[node name="Timer" type="Timer" parent="." unique_id=796506037]
+one_shot = true
+
+[node name="AudioStaticPlayer" type="AudioStreamPlayer" parent="." unique_id=696680518]
+stream = ExtResource("6_pmeph")
+
+[connection signal="pressed" from="CanvasLayer/CamHider/CamButtons/Cam1Button" to="CanvasLayer/CamHider" method="_on_cam_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/CamHider/CamButtons/Cam2Button" to="CanvasLayer/CamHider" method="_on_cam_2_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer2/CameraButton" to="." method="_on_camera_button_mouse_entered"]
+[connection signal="timeout" from="Timer" to="CanvasLayer/CamHider" method="_on_timer_timeout"]

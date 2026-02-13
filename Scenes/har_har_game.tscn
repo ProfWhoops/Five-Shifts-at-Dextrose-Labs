@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://1ss4u4gyo735"]
+
+[ext_resource type="PackedScene" uid="uid://djrnftl1kgjo8" path="res://Scenes/office.tscn" id="1_w54b1"]
+[ext_resource type="PackedScene" uid="uid://draqvbiwggdhj" path="res://Scenes/cameras.tscn" id="2_yaxj8"]
+
+[node name="har har game" type="Control" unique_id=591487861]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Office" parent="." unique_id=1800275553 instance=ExtResource("1_w54b1")]
+position = Vector2(0, 6)
+
+[node name="Cameras" parent="." unique_id=549763878 instance=ExtResource("2_yaxj8")]
+layout_mode = 1
