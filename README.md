@@ -1,4 +1,7 @@
 [![Static Badge](https://img.shields.io/badge/Godot%20Engine-4.3-blue?style=plastic&logo=godotengine)](https://godotengine.org/)
+![GitHub top language](https://img.shields.io/github/languages/top/ProfWhoops/Five-Shifts-at-Dextrose-Labs?logo=godotengine)
+
+
 
 # Five Shifts at Dextrose Labs #
 A FNaF fangame using Godot.
