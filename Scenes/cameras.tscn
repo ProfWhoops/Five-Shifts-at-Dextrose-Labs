@@ -4,8 +4,17 @@
 [ext_resource type="Script" uid="uid://hfdh363hr8pm" path="res://Scenes/Scripts/cam_footage.gd" id="2_n8fnm"]
 [ext_resource type="Texture2D" uid="uid://b34emyh41y4ej" path="res://Assets/Images/hallway1.svg" id="3_vua3y"]
 [ext_resource type="Texture2D" uid="uid://ce35fmjvdkcup" path="res://Assets/Images/ipad.svg" id="4_0i2nn"]
+[ext_resource type="Shader" uid="uid://curlqcwksngv1" path="res://Assets/Shaders/office.gdshader" id="4_qjbw0"]
 [ext_resource type="Texture2D" uid="uid://b07jxhfl3kfu1" path="res://Assets/Images/TV Static.jpeg" id="4_vua3y"]
+[ext_resource type="Script" uid="uid://deiiud8pktifn" path="res://Scenes/canvas_layer_2.gd" id="6_odbqu"]
 [ext_resource type="AudioStream" uid="uid://dwsvjgwhos5nr" path="res://Assets/Audio/dragon-studio-tv-static-323620.mp3" id="6_pmeph"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7sklb"]
+shader = ExtResource("4_qjbw0")
+shader_parameter/zoom = 100
+shader_parameter/smoothed = true
+shader_parameter/vertical = false
+shader_parameter/noWrap = true
 
 [node name="Cameras" type="Control" unique_id=549763878]
 layout_mode = 3
@@ -48,11 +57,22 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -154.0794
+offset_right = 154.0794
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_vua3y")
 expand_mode = 3
 stretch_mode = 6
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CamHider/UpadBOOST" unique_id=1373981893]
+material = SubResource("ShaderMaterial_7sklb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Static" type="TextureRect" parent="CanvasLayer/CamHider/UpadBOOST" unique_id=1000261902]
 self_modulate = Color(1, 1, 1, 0.22352941)
@@ -101,9 +121,10 @@ offset_right = 942.0
 offset_bottom = 439.0
 text = "Cam2"
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=398162466]
+[node name="CamButtonVisibility" type="CanvasLayer" parent="." unique_id=398162466]
+script = ExtResource("6_odbqu")
 
-[node name="CameraButton" type="Button" parent="CanvasLayer2" unique_id=1718190028]
+[node name="CameraButton" type="Button" parent="CamButtonVisibility" unique_id=1718190028]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -123,5 +144,5 @@ stream = ExtResource("6_pmeph")
 
 [connection signal="pressed" from="CanvasLayer/CamHider/CamButtons/Cam1Button" to="CanvasLayer/CamHider" method="_on_cam_1_pressed"]
 [connection signal="pressed" from="CanvasLayer/CamHider/CamButtons/Cam2Button" to="CanvasLayer/CamHider" method="_on_cam_2_pressed"]
-[connection signal="mouse_entered" from="CanvasLayer2/CameraButton" to="." method="_on_camera_button_mouse_entered"]
+[connection signal="mouse_entered" from="CamButtonVisibility/CameraButton" to="." method="_on_camera_button_mouse_entered"]
 [connection signal="timeout" from="Timer" to="CanvasLayer/CamHider" method="_on_timer_timeout"]

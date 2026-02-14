@@ -2,6 +2,14 @@
 
 [ext_resource type="Script" uid="uid://bpbtcnncrrwe7" path="res://Scenes/Scripts/camera_2d.gd" id="1_ei2s5"]
 [ext_resource type="Texture2D" uid="uid://c0n0ya84yyvyl" path="res://Assets/Images/office.svg" id="1_llmbb"]
+[ext_resource type="Shader" uid="uid://curlqcwksngv1" path="res://Assets/Shaders/office.gdshader" id="1_vggx3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vggx3"]
+shader = ExtResource("1_vggx3")
+shader_parameter/zoom = 100
+shader_parameter/smoothed = true
+shader_parameter/vertical = false
+shader_parameter/noWrap = true
 
 [node name="Office" type="Node2D" unique_id=1800275553]
 
@@ -18,3 +26,8 @@ scrollArea = 300
 scrollSpeed = 800.0
 scrollDivisions = 3
 officeSprite = NodePath("../OfficeSprite2D")
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=703956935]
+material = SubResource("ShaderMaterial_vggx3")
+offset_right = 1279.0
+offset_bottom = 722.0

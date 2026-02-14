@@ -59,7 +59,11 @@ func set_camera(cam_id):
 	camFootage.texture = camera_textures[cam_id]
 	set_pan_range()
 	pan_x = pan_range / 2	
-	pan_dir = 1.0
+	var rand := randi_range(0, 1)
+	if rand == 1:
+		pan_dir = -1.0 
+	else:
+		pan_dir = 1.0
 	
 	
 func set_pan_range():
