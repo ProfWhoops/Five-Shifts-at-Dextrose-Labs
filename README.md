@@ -10,6 +10,7 @@ A FNaF fangame using Godot.
 The following assets were used in the making of this game.
 
 ## 2D Art ##
-.svgs
+all made by me except for godot logo (by godot) and static (no copyright)
 
-
+## Audio ##
+tv static audio by dragon studio on pixabay.com (is royalty-free)
